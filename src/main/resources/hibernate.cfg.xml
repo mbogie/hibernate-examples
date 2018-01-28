@@ -13,7 +13,6 @@
         </property>
 
         <!-- Assume test is the database name -->
-
         <property name = "hibernate.connection.url">
             jdbc:mysql://localhost:3306/hr4?&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC
         </property>
@@ -33,6 +32,12 @@
         <property name="connection.pool_size">1</property>
 
         <property name="current_session_context_class">thread</property>
+
+        <property name="hibernate.c3p0.min_size">1</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
 
         <!-- List of XML mapping files -->
         <mapping resource="Employee.hbm.xml"/>
