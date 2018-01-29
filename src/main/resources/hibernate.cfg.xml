@@ -41,5 +41,7 @@
 
         <!-- List of XML mapping files -->
         <mapping resource="Employee.hbm.xml"/>
+        <mapping resource="Department.hbm.xml"/>
+        <mapping resource="Region.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

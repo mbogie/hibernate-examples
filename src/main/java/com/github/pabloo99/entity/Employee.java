@@ -20,4 +20,6 @@ public class Employee {
     private Double commissionPct;
     private Integer departmentId;
     private Integer managerId;
+
+    private Department department;
 }

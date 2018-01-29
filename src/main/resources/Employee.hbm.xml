@@ -24,5 +24,9 @@
         <property name="commissionPct" column="commission_pct" type="double"/>
         <property name="departmentId" column="department_id" type="int"/>
         <property name="managerId" column="manager_id" type="int"/>
+
+        <many-to-one name = "department" column = "department_id"
+                     class="com.github.pabloo99.entity.Department" not-null="false"/>
+
     </class>
 </hibernate-mapping>

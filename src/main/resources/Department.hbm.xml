@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.github.pabloo99.entity.Department" table="DEPARTMENTS">
+
+        <meta attribute="class-description">
+            This class contains the departments detail.
+        </meta>
+
+        <id name="id" type="int" column="department_id">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="name" column="department_name" type="string"/>
+        <property name="locationId" column="location_id" type="int"/>
+        <property name="managerId" column="manager_id" type="int"/>
+    </class>
+</hibernate-mapping>

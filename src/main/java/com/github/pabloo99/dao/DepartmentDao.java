@@ -1,7 +1,7 @@
 package com.github.pabloo99.dao;
 
 import com.github.pabloo99.connection.HibernateUtil;
-import com.github.pabloo99.entity.Employee;
+import com.github.pabloo99.entity.Department;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,26 +10,24 @@ import org.hibernate.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeDao {
+public class DepartmentDao {
 
-    private final Logger logger = Logger.getLogger(EmployeeDao.class);
+    private final Logger logger = Logger.getLogger(DepartmentDao.class);
 
-    public List<Employee> findAll() {
+    public List<Department> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Transaction transaction = null;
-        List<Employee> employees = new ArrayList<>();
+        List<Department> departments = new ArrayList<>();
 
         try {
             transaction = session.beginTransaction();
 
-            employees =
-                    session.createQuery("FROM Employee").
+            departments =
+                    session.createQuery("FROM Department").
                             getResultList();
 
             transaction.commit();
-
-            return employees;
         } catch (HibernateException e) {
             if (transaction != null)
                 transaction.rollback();
@@ -39,20 +37,20 @@ public class EmployeeDao {
             session.close();
         }
 
-        return employees;
+        return departments;
     }
 
-    public Employee findById(Integer id) {
+    public Department findById(Integer id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Transaction transaction = null;
 
         try {
             transaction = session.beginTransaction();
-            Employee employee = (Employee) session.get(Employee.class, id);
+            Department department = (Department) session.get(Department.class, id);
             transaction.commit();
 
-            return employee;
+            return department;
         } catch (HibernateException e) {
             if (transaction != null)
                 transaction.rollback();
@@ -72,8 +70,8 @@ public class EmployeeDao {
 
         try {
             transaction = session.beginTransaction();
-            Employee employee = (Employee) session.get(Employee.class, id);
-            session.delete(employee);
+            Department department = (Department) session.get(Department.class, id);
+            session.delete(department);
             transaction.commit();
         } catch (HibernateException e) {
             if (transaction != null)
@@ -85,14 +83,14 @@ public class EmployeeDao {
         }
     }
 
-    public void update(Employee employee) {
+    public void update(Department department) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Transaction transaction = null;
 
         try {
             transaction = session.beginTransaction();
-            session.update(employee);
+            session.update(department);
             transaction.commit();
         } catch (HibernateException e) {
             if (transaction != null)
@@ -104,14 +102,14 @@ public class EmployeeDao {
         }
     }
 
-    public void saveEmployee(Employee employee) {
+    public void save(Department department) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         Transaction transaction = null;
 
         try {
             transaction = session.beginTransaction();
-            session.save(employee);
+            session.save(department);
             transaction.commit();
         } catch (HibernateException e) {
             if (transaction != null)
