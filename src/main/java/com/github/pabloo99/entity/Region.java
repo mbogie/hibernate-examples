@@ -12,19 +12,13 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "jobs")
-public class Jobs {
+@Table(name = "regions")
+public class Region {
 
     @Id
-    @Column(name = "job_id")
-    private String id;
+    @Column(name = "region_id")
+    private Integer id;
 
-    @Column(name = "job_title")
+    @Column(name = "region_name")
     private String name;
-
-    @Column(name = "min_salary")
-    private Integer minSalary;
-
-    @Column(name = "max_salary")
-    private Integer maxSalary;
 }
