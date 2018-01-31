@@ -15,8 +15,10 @@ import java.sql.Date;
 public class JobHistory {
 
     @Id
+    @Column(name = "employee_id")
     private Integer employeeId;
     @Id
+    @Column(name = "start_date")
     private Date startDate;
 
     @Column(name = "end_date")
