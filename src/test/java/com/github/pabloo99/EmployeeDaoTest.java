@@ -37,6 +37,13 @@ public class EmployeeDaoTest {
     }
 
     @Test
+    public void shouldFindEmployeeWithDepartmentName() {
+        Employee employee = employeeDao.findById(100);
+
+        Assert.assertTrue(employee.getDepartment().getName() != null);
+    }
+
+    @Test
     public void shouldSaveAndDeleteEmployee() {
         Employee employeeBeforeSave = employeeDao.findById(100);
         employeeBeforeSave.setId(506);
