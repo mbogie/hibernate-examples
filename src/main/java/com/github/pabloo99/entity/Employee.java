@@ -2,11 +2,13 @@ package com.github.pabloo99.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.sql.Date;
 
 @NoArgsConstructor
 @Data
+@ToString
 public class Employee {
 
     private Integer id;

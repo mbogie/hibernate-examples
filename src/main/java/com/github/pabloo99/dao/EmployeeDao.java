@@ -71,5 +71,61 @@ public class EmployeeDao {
         return null;
     }
 
+    public void update(Employee employee) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
+        Transaction transaction = null;
+
+        try {
+            transaction = session.beginTransaction();
+            session.update(employee);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null)
+                transaction.rollback();
+
+            logger.error(e.getMessage(), e);
+        } finally {
+            session.close();
+        }
+    }
+
+    public void save(Employee employee) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        Transaction transaction = null;
+
+        try {
+            transaction = session.beginTransaction();
+            session.save(employee);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null)
+                transaction.rollback();
+
+            logger.error(e.getMessage(), e);
+        } finally {
+            session.close();
+        }
+    }
+
+    public void delete(Integer id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        Transaction transaction = null;
+
+        try {
+            transaction = session.beginTransaction();
+            Employee employee = (Employee) session.get(Employee.class, id);
+            session.delete(employee);
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null)
+                transaction.rollback();
+
+            logger.error(e.getMessage(), e);
+        } finally {
+            session.close();
+        }
+    }
 }
