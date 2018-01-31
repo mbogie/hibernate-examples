@@ -20,6 +20,6 @@ public class Employee {
     private String jobId;
     private Double salary;
     private Double commissionPct;
-    private Integer departmentId;
+    private int departmentId;
     private Integer managerId;
 }
