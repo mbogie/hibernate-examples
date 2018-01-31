@@ -29,7 +29,7 @@ public class CountryDao extends HibernateDao<Country>{
             Criteria cr = session.createCriteria(Country.class);
             cr.add(Restrictions.eq("id", id));
 
-            transaction.commit();
+            //transaction.commit();
 
             return (Country) cr.uniqueResult();
         } catch (HibernateException e) {
