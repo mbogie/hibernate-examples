@@ -2,6 +2,7 @@ package com.github.pabloo99.dao;
 
 import com.github.pabloo99.connection.HibernateUtil;
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -30,6 +31,12 @@ public class HibernateDao<T> {
 
         try {
             transaction = session.beginTransaction();
+
+//            EXECUTED WITH DEPRECATED API
+//            Criteria cr = session.createCriteria(type);
+//            List<T> results = cr.list();
+//
+//            return results;
 
             CriteriaBuilder builder = session.getCriteriaBuilder();
             CriteriaQuery<T> query = builder.createQuery(type);
