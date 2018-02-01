@@ -1,10 +1,7 @@
 package com.github.pabloo99;
 
-import com.github.pabloo99.dao.CountryDao;
 import com.github.pabloo99.dao.DepartmentDao;
-import com.github.pabloo99.entity.Region;
 import lombok.extern.log4j.Log4j;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -19,14 +16,5 @@ public class DepartmentDaoTest {
         int count = departmentDao.countEmployeesByDepartmentId(60);
 
         assertEquals(count, 5);
-    }
-
-    @Test
-    public void findInformationAboutRegionContinent() {
-        CountryDao countryDao = new CountryDao();
-
-        Region region = countryDao.findById("AR").getRegion();
-
-        Assert.assertTrue(region.getName().equals("Americas"));
     }
 }

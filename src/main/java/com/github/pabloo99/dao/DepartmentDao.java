@@ -18,7 +18,9 @@ public class DepartmentDao {
             transaction = session.beginTransaction();
 
             Query query = session.createQuery("SELECT COUNT(*) AS count " +
-                    "FROM Employee WHERE departmentId = :department_id");
+                    " FROM Employee AS emp " +
+                    " JOIN Department AS dep ON dep.id = emp.department.id " +
+                    " WHERE dep.id = :department_id");
             query.setParameter("department_id", departmentId);
 
             Long resultLong = (Long) query.getSingleResult();
